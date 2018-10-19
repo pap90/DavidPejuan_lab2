@@ -177,16 +177,53 @@ public class LabII {
                                     int respest = sc.nextInt();
                                     avioneses.add(avionesest.get(respest));
                                     avionesest.remove(respest);
-                                }
-                                else{
+                                } else {
                                     System.out.println("ya hay diez aviones en espera.");
                                 }
                                 break;
                             case 2:
+                                if (avioneses.size() < 5) {
+                                    System.out.println("seleccione el avion: ");
+                                    listar(avioneses);
+                                    int respes = sc.nextInt();
+                                    avioneslistos.add(avioneses.get(respes));
+                                    avioneses.remove(respes);
+                                } else {
+                                    System.out.println("Ya hay 5 aviones listos");
+                                }
+                                break;
+                            case 3:
                                 System.out.println("seleccione el avion: ");
-                                listar(avioneses);
-                                int respes=sc.nextInt();
-                                System.out.println("");
+                                listar(avioneslistos);
+                                int resplistos=sc.nextInt();
+                                System.out.println("1- ponerlo en espera.\n"
+                                        + "2- ponerlo en vuelo");
+                                int respestado=sc.nextInt();
+                                switch (respestado) {
+                                    case 1:
+                                        if (avioneses.size()<10) {
+                                            avioneses.add(avioneslistos.get(resplistos));
+                                            avioneslistos.remove(resplistos);
+                                        }else{
+                                            System.out.println("ya esta el numero maximo en espera");
+                                        }
+                                        break;
+                                    case 2:
+                                        avionesenvuelo.add(avioneslistos.get(resplistos));
+                                        avioneslistos.remove(resplistos);
+                                        break;
+                                    default:
+                                        
+                                }
+                                break;
+                            case 4:
+                                System.out.println("seleccione el avion: ");
+                                listar(avionesenvuelo);
+                                int respvuelo=sc.nextInt();
+                                avionesest.add(avionesenvuelo.get(respvuelo));
+                                avionesenvuelo.remove(respvuelo);
+                                break;
+
                             default:
 
                         }
